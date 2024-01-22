@@ -1,8 +1,16 @@
 import fs from "node:fs/promises";
-import type { Employee, Query, SortEnum, UpdateEmployee } from "../models/employee.schema";
+import type {
+  Employee,
+  Query,
+  UpdateEmployee,
+} from "../models/employee.schema";
 
 const DATA_PATH = process.cwd() + "/public/data.json";
 
+/**
+ * function to generate an unique id
+ * @returns an unique id as string
+ */
 function generateUniqueId(): string {
   const prefix = "emp";
   const timestamp = new Date().getTime().toString(16);
@@ -13,6 +21,10 @@ function generateUniqueId(): string {
   return uniqueId;
 }
 
+/**
+ * function to read employee data from file
+ * @returns list of employees
+ */
 async function readEmployeeData(): Promise<Employee[]> {
   try {
     const fileData = await fs.readFile(DATA_PATH, "utf-8");
@@ -23,6 +35,10 @@ async function readEmployeeData(): Promise<Employee[]> {
   }
 }
 
+/**
+ * function to write employee data to file
+ * @param employeeList 
+ */
 async function writeEmployeeData(employeeList: Employee[]): Promise<void> {
   try {
     await fs.writeFile(
@@ -36,6 +52,11 @@ async function writeEmployeeData(employeeList: Employee[]): Promise<void> {
   }
 }
 
+/**
+ * function to create employee
+ * @param data 
+ * @returns created employee data
+ */
 export async function createEmployee(data: Employee) {
   let employeeList: Employee[] = await readEmployeeData();
 
@@ -49,6 +70,12 @@ export async function createEmployee(data: Employee) {
   return newEmployee;
 }
 
+/**
+ * function to update employee
+ * @param updatedEmployeeData 
+ * @param employeeId 
+ * @returns updated employee list
+ */
 export async function updateEmployee(
   updatedEmployeeData: UpdateEmployee,
   employeeId: string
@@ -72,6 +99,11 @@ export async function updateEmployee(
   return employeeList;
 }
 
+/**
+ * deletes employee
+ * @param employeeId 
+ * @returns updated employee list
+ */
 export async function deleteEmployee(employeeId: string) {
   let employeeList = await readEmployeeData();
 
@@ -90,6 +122,11 @@ export async function deleteEmployee(employeeId: string) {
   return employeeList;
 }
 
+/**
+ * function to fetch employee list
+ * @param queryObject 
+ * @returns employee list matching the query
+ */
 export async function fetchEmployees(queryObject: Query) {
   let employeeList = await readEmployeeData();
 
@@ -142,9 +179,9 @@ export async function fetchEmployees(queryObject: Query) {
           if (a.name > b.name) return 1 * order;
         }
         if (actualField.includes("salary")) {
-            if (a.salary < b.salary) return -1 * order;
-            if (a.salary > b.salary) return 1 * order;
-          }
+          if (a.salary < b.salary) return -1 * order;
+          if (a.salary > b.salary) return 1 * order;
+        }
       }
 
       return 0;
@@ -154,14 +191,15 @@ export async function fetchEmployees(queryObject: Query) {
   return employeeList;
 }
 
+/**
+ * function to fetch employee details by id
+ * @param id 
+ * @returns employee detail
+ */
 export async function fetchEmployeeById(id: string) {
-    let employeeList = await readEmployeeData();
-  
+  let employeeList = await readEmployeeData();
 
-  
-    const employee = employeeList.find((employee) => employee.id === id);
+  const employee = employeeList.find((employee) => employee.id === id);
 
-  
-    return employee;
-  }
-  
+  return employee;
+}

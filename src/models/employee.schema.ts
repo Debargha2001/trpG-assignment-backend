@@ -27,7 +27,3 @@ export const QuerySchema = z.object({
     sort: z.string().optional()
 }) 
 export type Query = z.infer<typeof QuerySchema>
-
-export const SortEnumSchema = z.enum(["id", "salary", "email", "name"]);
-
-export type SortEnum  = z.infer<typeof SortEnumSchema>

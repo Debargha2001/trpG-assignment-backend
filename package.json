@@ -6,7 +6,12 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/server.js",
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "start:prod": "pm2 start dist/server.js",
+    "restart:prod": "pm2 restart dist/server.js",
+    "status:prod": "pm2 status dist/server.js",
+    "stop:prod": "pm2 stop dist/server.js",
+    "delete:prod": "pm2 delete dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +29,7 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
+    "pm2": "^5.3.1",
     "zod": "^3.22.4"
   }
 }
