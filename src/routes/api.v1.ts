@@ -9,6 +9,9 @@ route.get("/", (_req, res) => {
 
 route.post("/employees", EmployeeController.createEmployee)
 route.put("/employees/:id", EmployeeController.updateEmployee)
+route.delete("/employees/:id", EmployeeController.deleteEmployee)
+route.get("/employees", EmployeeController.fetchEmployees)
+route.get("/employees/:id", EmployeeController.fetchEmployeeById)
 
 
 export default route;

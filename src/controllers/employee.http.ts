@@ -44,7 +44,53 @@ export async function updateEmployee(req: Request, res: Response) {
     const employeeData = await EmployeeService.updateEmployee(req.body, id);
         return new ApiResponse(res).success({
             statusCode: 200,
-            message: "employee created",
+            message: "employee updated",
+            data: employeeData
+        })
+    }catch(err){
+        return new ApiResponse(res).errorObj(err);
+    }
+}
+
+export async function deleteEmployee(req: Request, res: Response) {
+    try{
+        const id = req.params.id;
+        if(!req.params.id){
+            return new ApiResponse(res).error({
+                statusCode: 400,
+                message: "employee id is required",
+            })
+        }
+    const employeeData = await EmployeeService.deleteEmployee(id);
+        return new ApiResponse(res).success({
+            statusCode: 200,
+            message: "employee deleted",
+            data: employeeData
+        })
+    }catch(err){
+        return new ApiResponse(res).errorObj(err);
+    }
+}
+
+export async function fetchEmployees(req: Request, res: Response) {
+    try{
+    const employeeData = await EmployeeService.fetchEmployees(req.query);
+        return new ApiResponse(res).success({
+            statusCode: 200,
+            message: "success",
+            data: employeeData
+        })
+    }catch(err){
+        return new ApiResponse(res).errorObj(err);
+    }
+}
+
+export async function fetchEmployeeById(req: Request, res: Response) {
+    try{
+    const employeeData = await EmployeeService.fetchEmployeeById(req.params.id);
+        return new ApiResponse(res).success({
+            statusCode: 200,
+            message: "success",
             data: employeeData
         })
     }catch(err){

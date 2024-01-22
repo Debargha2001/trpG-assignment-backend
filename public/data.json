@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Debargha Dutta",
+    "email": "debarghadutta2001@gmail.com",
+    "position": "Backend Developer",
+    "salary": 400000,
+    "id": "emp_18d331d9bcbb684"
+  },
+  {
+    "name": "Test User 1",
+    "email": "testuser@gmail.com",
+    "position": "Frontend Developer",
+    "salary": 500000,
+    "id": "emp_18d331e6a219f724"
+  },
+  {
+    "name": "Debmalya",
+    "email": "testuser1@gmail.com",
+    "position": "Frontend Developer",
+    "salary": 500000,
+    "id": "emp_18d336bbdbf1d2fe"
+  }
+]
