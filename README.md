@@ -167,3 +167,7 @@
   }
   ```
 
+## Testing APIs using Frontend
+For testing APIs using the frontend, you can clone the following repository and run the React application locally:
+
+Frontend Repository - https://github.com/Debargha2001/trpG-assignment-frontend 
