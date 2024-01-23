@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from "express";
-import routes from "./routes/api.v1";
+import routes from "./routes/routes.v1";
 import morgan from "morgan";
 
 
@@ -8,9 +8,9 @@ const app: Express = express();
 
 app.use(express.json());
 app.use(morgan("dev"))
-app.use("/", routes);
+app.use("/v1", routes);
 
-const port = process.env.PORT || 8080;
+const port = 8080;
 
 
 app.listen(port, () => {
