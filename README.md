@@ -167,6 +167,10 @@
   }
   ```
 
+## Postman API Collection
+
+Link - https://drive.google.com/file/d/1qg-LUJbBo8vGMjhiesrlV_WVMhQvFUt5/view?usp=sharing
+
 ## Testing APIs using Frontend
 For testing APIs using the frontend, you can clone the following repository and run the React application locally:
 
